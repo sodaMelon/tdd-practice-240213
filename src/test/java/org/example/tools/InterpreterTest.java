@@ -19,7 +19,7 @@ public class InterpreterTest {
     @DisplayName("명령행에서 넘겨주는 인자 3개: 만족")
     public void elementsTest() throws Exception {
         String[] bestCase = {"2", "+" ,"3"};
-        Assertions.assertThat(interpreter.readArgs(bestCase)).isTrue();
+        Assertions.assertThat(interpreter.readArgs(bestCase)).isEqualTo(5);
     }
 
     @Test

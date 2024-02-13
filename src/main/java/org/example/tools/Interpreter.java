@@ -12,14 +12,17 @@ public class Interpreter {
     private final int markIndex=1;
     private final int lastIndex=2;
 
-    public boolean readArgs(String[] args) throws Exception {
+    public double readArgs(String[] args) throws Exception {
         if (! hasThreeElements(args)){
             throw new ArgsCountException();
         }
         if (! scanHasRightElements(args)){
             throw new ArgsConditionException();
         }
-        return true;
+
+        Memory memory =new Memory(args[firstIndex],args[markIndex],args[lastIndex]);
+        memory.doOperation();
+        return memory.getResult();
     }
 
     public boolean scanHasRightElements(String[] args){

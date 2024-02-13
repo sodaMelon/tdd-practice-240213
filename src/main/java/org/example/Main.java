@@ -7,12 +7,11 @@ public class Main {
     public static void main(String[] args) {
         Interpreter interpreter = new Interpreter();
         try {
-            interpreter.readArgs(args);
+            System.out.println(interpreter.readArgs(args));
         }catch (Exception e){
-            System.out.println("error occur:");
+            e.printStackTrace();
+            System.out.println("error occur: read msg and Try again");
             System.out.println(e.getMessage());
         }
-        System.out.println("-fin-");
-
     }
 }
