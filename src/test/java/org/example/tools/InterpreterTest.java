@@ -19,7 +19,7 @@ public class InterpreterTest {
     @DisplayName("명령행에서 넘겨주는 인자 3개: 만족")
     public void elementsTest() throws Exception {
         String[] bestCase = {"2", "+" ,"3"};
-        Assertions.assertThat(interpreter.has3Args(bestCase)).isTrue();
+        Assertions.assertThat(interpreter.readArgs(bestCase)).isTrue();
     }
 
     @Test
@@ -27,14 +27,14 @@ public class InterpreterTest {
     public void elementsTest2() {
         String[] elementsMoreThan3 = {"2", "+" ,"3","4"};
         Assertions.assertThatThrownBy( () -> {
-                    interpreter.has3Args(elementsMoreThan3);
+                    interpreter.readArgs(elementsMoreThan3);
                 }).isInstanceOf(ArgsCountException.class)
-                .hasMessageContaining("Args should be 3 words.");
+                .hasMessageContaining("be 3 words.");
         String[] elementsLessThan3 = {"2", "+" };
         Assertions.assertThatThrownBy( () -> {
-                    interpreter.has3Args(elementsLessThan3);
+                    interpreter.readArgs(elementsLessThan3);
                 }).isInstanceOf(ArgsCountException.class)
-                .hasMessageContaining("Args should be 3 words.");
+                .hasMessageContaining("be 3 words.");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class InterpreterTest {
     public void elementsTest3() {
         String[] elementsWithNoMark = {"2", "@" ,"3"};
         Assertions.assertThatThrownBy( () -> {
-                    interpreter.has3Args(elementsWithNoMark);
+                    interpreter.readArgs(elementsWithNoMark);
                 }).isInstanceOf(ArgsConditionException.class)
                 .hasMessageContaining("mark");
         }

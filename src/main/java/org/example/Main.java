@@ -4,11 +4,10 @@ import org.example.tools.Interpreter;
 
 public class Main {
 
-    public static void main(String[] args)
-    {
+    public static void main(String[] args) {
         Interpreter interpreter = new Interpreter();
         try {
-            interpreter.has3Args(args);
+            interpreter.readArgs(args);
         }catch (Exception e){
             System.out.println("error occur:");
             System.out.println(e.getMessage());
